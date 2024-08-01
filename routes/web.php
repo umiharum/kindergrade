@@ -14,6 +14,18 @@ Route::get('/kelas', function () {
     return view('kelas',['title' => 'Kelas']);
 });
 
+Route::get('/guru', function () {
+    return view('guru',['title' => 'Guru']);
+});
+
+Route::get('/murid', function () {
+    return view('murid',['title' => 'Murid']);
+});
+
+Route::get('/orangtua', function () {
+    return view('orangtua',['title' => 'Orang Tua']);
+});
+
 // Route::get('/login', function () {
 //     return view('login');
 // });
