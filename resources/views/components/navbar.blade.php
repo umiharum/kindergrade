@@ -20,10 +20,14 @@
 
         <!-- Logo -->
         <div>
-            <img class="w-10 h-auto"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&" />
-            <x-nav-link href="/dashboard" :active="request()->is('dashboard')"></x-nav-link>
+            <x-nav-link 
+                style="background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&') no-repeat center center; background-size: contain; display: block; width:40px; height: 40px;" 
+                href="/dashboard" 
+                :active="request()->is('dashboard')">
+            </x-nav-link>
         </div>
+        
+        
 
         <!-- User avatar button -->
         <div class="relative flex items-center flex-shrink-0 p-2" x-data="{ isOpen: false }">
@@ -54,10 +58,14 @@
     <nav aria-label="Options"
         class="z-20 flex-col items-center flex-shrink-0 hidden w-16 py-4 bg-white border-r-2 shadow-md sm:flex rounded-tr-3xl rounded-br-3xl border-primary-100">
         <!-- Logo -->
-        <div class="flex-shrink-0 py-4">
-            <img class="w-10 h-auto"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&" />
+        <div class="flex flex-col items-center justify-center py- space-y-2">
+            <x-nav-link 
+                style="background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&') no-repeat center center; background-size: 40%; display: block; width: 100px; height: 100px;" 
+                href="/dashboard" 
+                :active="request()->is('dashboard')">
+            </x-nav-link>
         </div>
+        
         <div class="flex flex-col items-center flex-1 p-2 space-y-4">
             <!-- Menu Input Data -->
             <button
