@@ -25,6 +25,9 @@ Route::get('/murid', function () {
 Route::get('/orangtua', function () {
     return view('orangtua',['title' => 'Orang Tua']);
 });
+Route::get('kelas/indatakelas', function () {
+    return view('inputdatakelas',['title' => 'Menambahkan Data Kelas']);
+});
 
 // Route::get('/login', function () {
 //     return view('login');
