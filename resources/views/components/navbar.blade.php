@@ -1,205 +1,105 @@
-<div class="flex flex-shrink-0 transition-all">
-    <div x-show="isSidebarOpen" @click="isSidebarOpen = false" class="fixed inset-0 z-10 bg-black bg-opacity-50 lg:hidden">
-    </div>
-    <div x-show="isSidebarOpen" class="fixed inset-y-0 z-10 w-16 bg-white"></div>
+<nav class="bg-gray-800" x-data="{ isOpen: false }" >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+                <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+              <x-nav-link href="/class" :active="request()->is('class')">Kelas</x-nav-link>
+              <x-nav-link href="/teachers" :active="request()->is('teacher')">Teacher</x-nav-link>
+              <x-nav-link href="/students" :active="request()->is('students')">Student</x-nav-link>
+              <x-nav-link href="/parents" :active="request()->is('parents')">Parent</x-nav-link>
+            </div>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="absolute -inset-1.5"></span>
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
 
-    <!-- Mobile bottom bar -->
-    <nav aria-label="Options"
-        class="fixed inset-x-0 bottom-0 flex flex-row-reverse items-center justify-between px-4 py-2 bg-white border-t sm:hidden shadow-t border-primary-100 rounded-t-3xl">
-        <!-- Menu button -->
-        <button
-            @click="(isSidebarOpen && currentSidebarTab == 'fullTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'fullTab'"
-            class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2"
-            :class="(isSidebarOpen && currentSidebarTab == 'fullTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
-            <span class="sr-only">Data</span>
-            <svg aria-hidden="true" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+              <div>
+                <button type="button" @click="isOpen = !isOpen" class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </button>
+              </div>
+
+              <div x-show="isOpen"
+              x-transition:enter="transition ease-out duration-100 transform"
+              x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75 transform"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <!-- Mobile menu button -->
+          <button type="button" @click="isOpen = !isOpen" class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!-- Menu open: "hidden", Menu closed: "block" -->
+            <svg :class="{'hidden': isOpen, 'block': !isOpen }" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
-        </button>
-
-        <!-- Logo -->
-        <div>
-            <x-nav-link 
-                style="background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&') no-repeat center center; background-size: contain; display: block; width:40px; height: 40px;" 
-                href="/dashboard" 
-                :active="request()->is('dashboard')">
-            </x-nav-link>
+            <!-- Menu open: "block", Menu closed: "hidden" -->
+            <svg :class="{'block': isOpen, 'hidden': !isOpen }" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        
-        
-
-        <!-- User avatar button -->
-        <div class="relative flex items-center flex-shrink-0 p-2" x-data="{ isOpen: false }">
-            <button @click="isOpen = !isOpen; $nextTick(() => {isOpen ? $refs.userMenu.focus() : null})"
-                class="transition-opacity rounded-lg opacity-80 hover:opacity-100 focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2">
-                <img class="w-8 h-8 rounded-lg shadow-md"
-                    src="https://avatars.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
-                    alt="Ahmed Kamel" />
-                <span class="sr-only">User menu</span>
-            </button>
-            <div x-show="isOpen" @click.away="isOpen = false" @keydown.escape="isOpen = false" x-ref="userMenu"
-                tabindex="-1"
-                class="absolute w-48 py-1 mt-2 origin-bottom-left bg-white rounded-md shadow-lg left-10 bottom-14 focus:outline-none"
-                role="menu" aria-orientation="vertical" aria-label="user menu">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your
-                    Profile</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem">Settings</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign
-                    out</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Left mini bar -->
-    <nav aria-label="Options"
-        class="z-20 flex-col items-center flex-shrink-0 hidden w-16 py-4 bg-white border-r-2 shadow-md sm:flex rounded-tr-3xl rounded-br-3xl border-primary-100">
-        <!-- Logo -->
-        <div class="flex flex-col items-center justify-center py- space-y-2">
-            <x-nav-link 
-                style="background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&') no-repeat center center; background-size: 40%; display: block; width: 100px; height: 100px;" 
-                href="/dashboard" 
-                :active="request()->is('dashboard')">
-            </x-nav-link>
-        </div>
-        
-        <div class="flex flex-col items-center flex-1 p-2 space-y-4">
-            <!-- Menu Input Data -->
-            <button
-                @click="(isSidebarOpen && currentSidebarTab == 'linksTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'linksTab'"
-                class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2"
-                :class="(isSidebarOpen && currentSidebarTab == 'linksTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
-                <span class="sr-only">Data</span>
-                <img src="https://img.icons8.com/?size=100&id=14512&format=png&color=000000" alt="Data">
-            </button>
-
-            <!-- Menu Input Report -->
-            <button
-                @click="(isSidebarOpen && currentSidebarTab == 'reportTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'reportTab'"
-                class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2"
-                :class="(isSidebarOpen && currentSidebarTab == 'reportTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
-                <span class="sr-only">Laporan</span>
-                <img src="https://img.icons8.com/?size=100&id=7SDxQwWmjb1X&format=png&color=000000" alt="Laporan">
-            </button>
-        </div>
-    </nav>
-
-    <div x-transition:enter="transform transition-transform duration-300" x-transition:enter-start="-translate-x-full"
-        x-transition:enter-end="translate-x-0" x-transition:leave="transform transition-transform duration-300"
-        x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full" x-show="isSidebarOpen"
-        class="fixed inset-y-0 left-0 z-10 flex-shrink-0 w-64 bg-white border-r-2 shadow-lg sm:left-16 border-primary-100 rounded-tr-3xl rounded-br-3xl sm:w-72 lg:static lg:w-64">
-        <nav x-show="currentSidebarTab == 'linksTab'" aria-label="Main" class="flex flex-col h-full">
-            <!-- Logo -->
-            <div class="flex items-center justify-center flex-shrink-0 py-10">
-                <img class="w-10 h-auto"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&" />
-            </div>
-
-            <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                <div class="mt-5 text-xs tracking-wider leading-5 uppercase text-zinc-400">Data</div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap rounded-md">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=18444&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/kelas" :active="request()->is('kelas')">Kelas</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=ggAxR7mNzNK6&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/guru" :active="request()->is('guru')">Guru</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=18200&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/murid" :active="request()->is('murid')">Murid</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=14970&format=png&color=000000"
-                        class="shrink-0 aspect-square w-[27px] h-[27px]" />
-                    <x-nav-link href="/orangtua" :active="request()->is('orangtua')">Orang Tua</x-nav-link>
-                </div>
-            </div>
-
-        </nav>
-
-        <section x-show="currentSidebarTab == 'reportTab'" aria-label="Main" class="flex flex-col h-full">
-            <div class="flex items-center justify-center flex-shrink-0 py-10">
-                <img class="w-10 h-auto"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&" />
-            </div>
-            <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                <div class="mt-5 text-xs tracking-wider leading-5 uppercase text-zinc-400">Laporan</div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=16704&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/harian" :active="request()->is('harian')">Harian</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=Zo3-bT74qE1g&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/bulanan" :active="request()->is('bulanan')">Bulanan</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=39362&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/semester" :active="request()->is('semester')">Semester</x-nav-link>
-                </div>
-            </div>
-        </section>
-
-        <section x-show="currentSidebarTab == 'notificationsTab'" class="px-4 py-6">
-            <h2 class="text-xl">Notifications</h2>
-        </section>
-
-        <nav x-show="currentSidebarTab == 'fullTab'" aria-label="Main" class="flex flex-col h-full">
-            <!-- Logo -->
-            <div class="flex items-center justify-center flex-shrink-0 py-10">
-                <img class="w-10 h-auto"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/cab8fb6008b054870c4bbc6de405a4d5d979c49d71b4db44beae91c5d1b4a87a?apiKey=2f2c809389da4ff0b822b22c50e6baf5&" />
-            </div>
-            <!-- Menu -->
-            <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-                <div class="mt-5 text-xs tracking-wider leading-5 uppercase text-zinc-400">Data</div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap rounded-md">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=18444&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/kelas" :active="request()->is('kelas')">Kelas</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=ggAxR7mNzNK6&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/guru" :active="request()->is('guru')">Guru</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=18200&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/murid" :active="request()->is('murid')">Murid</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=14970&format=png&color=000000"
-                        class="shrink-0 aspect-square w-[27px] h-[27px]" />
-                    <x-nav-link href="/orangtua" :active="request()->is('orangtua')">Orang Tua</x-nav-link>
-                </div>
-
-                <div class="mt-5 text-xs tracking-wider leading-5 uppercase text-zinc-400">Laporan</div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=16704&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/harian" :active="request()->is('harian')">Harian</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=Zo3-bT74qE1g&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/bulanan" :active="request()->is('bulanan')">Bulanan</x-nav-link>
-                </div>
-                <div class="flex gap-5 mt-5 whitespace-nowrap">
-                    <img loading="lazy" src="https://img.icons8.com/?size=100&id=39362&format=png&color=000000"
-                        class="shrink-0 w-[27px] h-[27px]" />
-                    <x-nav-link href="/semester" :active="request()->is('semester')">Semester</x-nav-link>
-                </div>
-            </div>
-        </nav>
+      </div>
     </div>
-</div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div x-show="isOpen" class="md:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+        <x-nav-link href="/class" :active="request()->is('class')">Kelas</x-nav-link>
+              <x-nav-link href="/teachers" :active="request()->is('teacher')">Teacher</x-nav-link>
+              <x-nav-link href="/students" :active="request()->is('students')">Student</x-nav-link>
+              <x-nav-link href="/parents" :active="request()->is('parents')">Parent</x-nav-link>
+      </div>
+      <div class="border-t border-gray-700 pb-3 pt-4">
+        <div class="flex items-center px-5">
+          <div class="flex-shrink-0">
+            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          </div>
+          <div class="ml-3">
+            <div class="text-base font-medium leading-none text-white">Tom Cook</div>
+            <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+          </div>
+          <button type="button" class="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span class="absolute -inset-1.5"></span>
+            <span class="sr-only">View notifications</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-3 space-y-1 px-2">
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </nav>

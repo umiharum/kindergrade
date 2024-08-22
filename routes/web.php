@@ -10,23 +10,23 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['title' => 'Dashboard']);
 });
 
-Route::get('/kelas', function () {
-    return view('kelas',['title' => 'Kelas']);
+Route::get('/class', function () {
+    return view('class',['title' => 'Class']);
 });
 
-Route::get('/guru', function () {
-    return view('guru',['title' => 'Guru']);
+Route::get('/teachers', function () {
+    return view('teacher',['title' => 'Teachers']);
 });
 
-Route::get('/murid', function () {
-    return view('murid',['title' => 'Murid']);
+Route::get('/students', function () {
+    return view('students',['title' => 'Students']);
 });
 
-Route::get('/orangtua', function () {
-    return view('orangtua',['title' => 'Orang Tua']);
+Route::get('/parents', function () {
+    return view('parents',['title' => 'Parents']);
 });
-Route::get('kelas/indatakelas', function () {
-    return view('inputdatakelas',['title' => 'Menambahkan Data Kelas']);
+Route::get('class/inpclass', function () {
+    return view('inputnewclass',['title' => 'Add New Class']);
 });
 
 // Route::get('/login', function () {
