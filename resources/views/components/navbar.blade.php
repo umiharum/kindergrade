@@ -8,7 +8,7 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
                 <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
-              <x-nav-link href="/class" :active="request()->is('class')">Kelas</x-nav-link>
+              <x-nav-link href="/classes" :active="request()->is('classes')">Kelas</x-nav-link>
               <x-nav-link href="/teachers" :active="request()->is('teacher')">Teacher</x-nav-link>
               <x-nav-link href="/students" :active="request()->is('students')">Student</x-nav-link>
               <x-nav-link href="/parents" :active="request()->is('parents')">Parent</x-nav-link>
@@ -73,7 +73,7 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
-        <x-nav-link href="/class" :active="request()->is('class')">Kelas</x-nav-link>
+        <x-nav-link href="/classes" :active="request()->is('classes')">Kelas</x-nav-link>
               <x-nav-link href="/teachers" :active="request()->is('teacher')">Teacher</x-nav-link>
               <x-nav-link href="/students" :active="request()->is('students')">Student</x-nav-link>
               <x-nav-link href="/parents" :active="request()->is('parents')">Parent</x-nav-link>

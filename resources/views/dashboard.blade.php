@@ -1,5 +1,5 @@
 <x-layout>
-
+    <x-slot:title>{{ $title }}</x-slot:title>
     <!-- welcome card-->
     <div class="grid grid-cols-3 gap-10">
         <div class="text-sm leading-6 w-full">
