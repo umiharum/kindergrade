@@ -5,37 +5,38 @@
             <form action="#">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="class-name" class="text-sm font-medium text-gray-900 block mb-2">Name of Class</label>
-                        <input type="text" name="class-name" id="class-name"
+                        <label for="class_name" class="text-sm font-medium text-gray-900 block mb-2">Name of Class</label>
+                        <input type="text" name="class_name" id="class_name"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Shopia" required="">
+                            placeholder="e.g: Class 1" required="">
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <label for="category" class="text-sm font-medium text-gray-900 block mb-2">Category</label>
-                        <input type="text" name="category" id="category"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Electronics" required="">
+                        <select name="category" id="category" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                            <option value="Kindergarten 1">Kindergarten 1</option>
+                            <option value="Kindergarten 2">Kindergarten 2</option>
+                        </select>
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="brand" class="text-sm font-medium text-gray-900 block mb-2">Brand</label>
-                        <input type="text" name="brand" id="brand"
+                        <label for="teacher_assigned" class="text-sm font-medium text-gray-900 block mb-2">Assinged Teacher</label>
+                        <input type="number" name="teacher_assigned" id="teacher_assigned"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Apple" required="">
+                            placeholder="3" required="">
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="price" class="text-sm font-medium text-gray-900 block mb-2">Price</label>
-                        <input type="number" name="price" id="price"
+                        <label for="student_assigned" class="text-sm font-medium text-gray-900 block mb-2">Assinged Student</label>
+                        <input type="number" name="student_assigned" id="student_assigned"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="$2300" required="">
+                            placeholder="16" required="">
                     </div>
                     <div class="col-span-full">
-                        <label for="product-details" class="text-sm font-medium text-gray-900 block mb-2">Product
-                            Details</label>
-                        <textarea id="product-details" rows="6"
+                        <label for="class-details" class="text-sm font-medium text-gray-900 block mb-2">Class Details</label>
+                        <textarea id="class-details" rows="3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                            placeholder="Details"></textarea>
+                            placeholder="Details or notes"></textarea>
                     </div>
-                    <div class="col-span-full">
+                    <!-- upload file-->
+                    {{-- <div class="col-span-full">
                         <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover
                             photo</label>
                         <div
@@ -58,7 +59,7 @@
                                 <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </div>
