@@ -11,8 +11,8 @@
                             placeholder="e.g: Class 1" required="">
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="category" class="text-sm font-medium text-gray-900 block mb-2">Category</label>
-                        <select name="category" id="category" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                        <label for="grade" class="text-sm font-medium text-gray-900 block mb-2">Grade</label>
+                        <select name="grade" id="grade" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                             <option value="Kindergarten 1">Kindergarten 1</option>
                             <option value="Kindergarten 2">Kindergarten 2</option>
                         </select>
@@ -30,8 +30,8 @@
                             placeholder="16" required="">
                     </div>
                     <div class="col-span-full">
-                        <label for="class-details" class="text-sm font-medium text-gray-900 block mb-2">Class Details</label>
-                        <textarea id="class-details" rows="3"
+                        <label for="description" class="text-sm font-medium text-gray-900 block mb-2">Description</label>
+                        <textarea id="description" rows="3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
                             placeholder="Details or notes"></textarea>
                     </div>
