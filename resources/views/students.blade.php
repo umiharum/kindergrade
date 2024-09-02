@@ -1,5 +1,10 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
+    <div class="flex justify-end">
+        <a href="student/inpstudent">
+         <button class="text-white bg-green-600 hover:bg-green-700 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                 type="">Add New Data</button></a>
+     </div>
     <div class="p-4">
         <div class="mx-auto flex h-[500px] max-w-[90rem] flex-col justify-start rounded-2xl bg-slate-500 bg-opacity-5 px-5 relative border-4">
             <ul role="list" class="divide-y divide-gray-100">
