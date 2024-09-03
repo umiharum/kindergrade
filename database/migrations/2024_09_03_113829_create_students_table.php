@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('speacial_note');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
