@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
-use App\Models\ClassList;
-use App\Models\StudentList;
+use App\Models\Classes;
+use App\Models\Student;
 use App\Models\TeacherList;
 
 Route::get('/', function () {
@@ -15,7 +15,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/classes', function () {
-    return view('classes',['title' => 'Class', 'classes' => ClassList::all()]);
+    return view('classes',['title' => 'Class', 'classes' => Classes::all()]);
 });
 
 Route::get('/teachers', function () {
@@ -23,7 +23,7 @@ Route::get('/teachers', function () {
 });
 
 Route::get('/students', function () {
-    return view('students',['title' => 'Students', 'students' => StudentList::all()]);
+    return view('students',['title' => 'Students', 'students' => Student::all()]);
 });
 
 Route::get('/parents', function () {
@@ -34,12 +34,9 @@ Route::get('/class/inpclass', function () {
     return view('inputnewclass',['title' => 'Add New Class']);
 });
 
-Route::get('/classes/{slug}', function ($slug) {
-    $class_detail = Arr::first(ClassList::all(), function($class_detail) use ($slug){
-        return $class_detail['slug'] == $slug;
-    });
+Route::get('/classes/{class:slug}', function (Classes $class) {
 
-    return view('class', ['title' => 'Detail Class', 'class_detail' => $class_detail]);
+    return view('class', ['title' => 'Detail Class', 'class_detail' => $class]);
 });
 
 // Route::get('/login', function () {
