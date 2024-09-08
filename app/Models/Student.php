@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Student extends Model
 {
@@ -23,4 +24,13 @@ class Student extends Model
         'special_note',
         'status',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($student) {
+            $student->update([
+                'slug' => Str::slug($student->name . '-' . $student->id),
+            ]);
+        });
+    }
 }

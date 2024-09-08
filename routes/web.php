@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
 use App\Models\Classes;
 use App\Models\Student;
-use App\Models\TeacherList;
+use App\Models\Teacher;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,7 +19,7 @@ Route::get('/classes', function () {
 });
 
 Route::get('/teachers', function () {
-    return view('teacher',['title' => 'Teachers', 'teachers' => TeacherList::all()]);
+    return view('teacher',['title' => 'Teachers', 'teachers' => Teacher::all()]);
 });
 
 Route::get('/students', function () {
