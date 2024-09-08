@@ -15,7 +15,7 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/classes', function () {
-    return view('classes',['title' => 'Class', 'classes' => Classes::all()]);
+    return view('classes',['title' => 'Classes', 'classes' => Classes::all()]);
 });
 
 Route::get('/teachers', function () {

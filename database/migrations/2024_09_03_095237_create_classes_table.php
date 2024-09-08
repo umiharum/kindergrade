@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('class_id')->unique();
             $table->string('description');
             $table->string('grade');
-            $table->string('slug')->unique();
             $table->integer('student_assigned');
             $table->integer('teacher_assigned');
             $table->timestamps();

@@ -19,11 +19,10 @@ return new class extends Migration
             $table->string('age');
             $table->string('grade');
             $table->string('class');
-            $table->string('teacher');
             $table->string('parent');
             $table->string('address');
             $table->string('phone');
-            $table->string('speacial_note');
+            $table->string('special_note');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
