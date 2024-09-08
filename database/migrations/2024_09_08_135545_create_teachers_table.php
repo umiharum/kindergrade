@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('teacher_id')->unique();
+            $table->string('teacher_id')->unique()->nullable();
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('phone');
             $table->string('address');
             $table->string('class')->nullable();

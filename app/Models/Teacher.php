@@ -13,8 +13,8 @@ class Teacher extends Model
     [
         'name',
         'slug',
-        'teacher_id',
         'email',
+        'password',
         'phone',
         'address',
         'class',
